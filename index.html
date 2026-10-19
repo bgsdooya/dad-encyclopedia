@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>아빠표 백과사전</title>
-<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#dff1ff;--card:#ffffff;--ink:#1b2a4a;--muted:#55648a;--line:#1b2a4a;
@@ -25,31 +25,33 @@
   --bg:#101a30;--card:#1b2744;--ink:#f3f6ff;--muted:#b3c0e0;--line:#8ea4de;
   --warn-bg:#4a1f1a;--warn-ink:#ffc9c0;--night:#0a1226;color-scheme:dark;
 }
+:root{--fh:"Nanum Gothic";--fb:"Nanum Gothic";--fw:800;--bw:400}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *,*::before,*::after{box-sizing:inherit}
 body{
   margin:0;background:var(--bg);color:var(--ink);
-  font-family:"Gowun Dodum","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
+  font-family:var(--fb),"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;font-weight:var(--bw);
   font-size:18px;line-height:1.55;-webkit-text-size-adjust:100%;
 }
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
 button{font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
 :focus-visible{outline:4px solid #ff7a00;outline-offset:2px}
-.jua,h1,h2,h3,.tile b,.item b,.lname,.qbtn b{font-family:"Jua","Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-weight:400}
+.jua,h1,h2,h3,.tile b,.item b,.lname,.qbtn b{font-family:var(--fh),"Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-weight:var(--fw)}
 
 header.top{
   position:sticky;top:env(safe-area-inset-top,0px);z-index:31;
   background:var(--bg);padding:10px 16px 12px;border-bottom:3px solid var(--line);
 }
 .top-in{max-width:1080px;margin:0 auto;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-.brand{border:0;background:none;padding:0;display:flex;align-items:center;gap:8px;text-align:left}
+.brand{border:0;background:none;padding:0;display:flex;align-items:center;gap:14px;text-align:left}
 .brand span.lg{font-size:40px;line-height:1}
-.brand .ttl{display:block;font-family:"Jua","Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-size:28px;line-height:1.1}
-.brand small{display:block;font-size:13px;color:var(--muted);font-family:"Gowun Dodum",sans-serif}
-.search{flex:1 1 260px;min-width:200px}
+.brand .ttl{display:block;font-family:var(--fh),"Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-weight:var(--fw);font-size:28px;line-height:1.1}
+.brand small{display:block;font-size:13px;color:var(--muted)}
+.search{flex:1 1 260px;min-width:200px;position:relative;display:block}
+.search::before{content:"🔍";position:absolute;left:18px;top:50%;transform:translateY(-50%);font-size:20px;pointer-events:none}
 .search input{
   width:100%;height:52px;border:3px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink);
-  padding:0 20px;font:inherit;font-size:19px;
+  padding:0 20px 0 52px;font:inherit;font-size:19px;
 }
 .search input::placeholder{color:var(--muted)}
 
@@ -61,7 +63,7 @@ main{max-width:1080px;margin:0 auto;padding:16px 16px 40px}
   box-shadow:0 6px 0 var(--line);margin-bottom:18px;
 }
 .moon .me{font-size:64px;line-height:1;flex:none}
-.moon b{font-family:"Jua",sans-serif;font-weight:400;font-size:24px;display:block;line-height:1.25}
+.moon b{font-family:var(--fh),sans-serif;font-weight:var(--fw);font-size:24px;display:block;line-height:1.25}
 .moon span.s{display:block;font-size:16px;opacity:.92}
 
 .quick{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:20px}
@@ -70,6 +72,7 @@ main{max-width:1080px;margin:0 auto;padding:16px 16px 40px}
   box-shadow:0 4px 0 var(--line);min-height:56px;text-align:center;
 }
 .qbtn b{font-size:20px;display:block}
+.qbtn>span{display:block;font-size:26px;line-height:1.2;margin-bottom:4px}
 .qbtn:active,.tile:active,.item:active,.lrow:active{transform:translateY(3px);box-shadow:0 1px 0 var(--line)}
 
 h2.sec{font-size:24px;margin:6px 0 12px}
@@ -78,15 +81,15 @@ h2.sec{font-size:24px;margin:6px 0 12px}
   border:3px solid var(--line);border-radius:24px;background:var(--c);color:#1b2a4a;padding:14px 10px 12px;
   text-align:center;box-shadow:0 5px 0 var(--line);
 }
-.tile .em{font-size:54px;display:block;line-height:1.15}
-.tile b{font-size:21px;display:block;margin-top:2px;line-height:1.25}
+.tile .em{font-size:54px;display:block;line-height:1.15;margin-bottom:8px}
+.tile b{font-size:21px;display:block;margin-top:0;line-height:1.25}
 .tile small{display:block;font-size:13px;line-height:1.35;margin-top:4px;opacity:.88}
 .tile i{font-style:normal;display:inline-block;margin-top:6px;font-size:13px;background:rgba(255,255,255,.7);border-radius:999px;padding:0 10px}
 
 .back{
   border:3px solid var(--line);background:var(--card);border-radius:999px;padding:6px 16px;min-height:44px;margin-bottom:12px;
 }
-.chead{display:flex;gap:14px;align-items:center;margin-bottom:8px}
+.chead{display:flex;gap:20px;align-items:center;margin-bottom:8px}
 .chead .em{font-size:56px;line-height:1}
 .chead h2{font-size:32px;margin:0;line-height:1.15}
 .chead p{margin:0;color:var(--muted);font-size:16px}
@@ -114,6 +117,9 @@ h2.sec{font-size:24px;margin:6px 0 12px}
   color:var(--muted);font-size:14.5px;line-height:1.4;
 }
 .item .bd{position:absolute;top:4px;right:10px;font-size:14px}
+.ej{display:inline-block;margin-right:.3em}
+.item .em .ej,.tile .em .ej,.chead .em .ej,.sh-top .big .ej,.lem .ej,.moon .me .ej,.qbtn>span .ej,.brand .lg .ej,.lrow .lem .ej{margin:0}
+.item .bd .ej{margin:0 0 0 .15em}
 .empty{padding:24px;text-align:center;color:var(--muted);border:3px dashed var(--line);border-radius:20px}
 
 .note{border:3px solid var(--line);border-radius:18px;background:var(--card);padding:10px 14px;margin:0 0 14px;font-size:16px;color:var(--muted)}
@@ -142,10 +148,10 @@ footer{max-width:1080px;margin:10px auto 0;padding:0 16px 30px;text-align:center
   max-height:100%;overflow:auto;box-shadow:0 8px 0 var(--line);overscroll-behavior:contain;
 }
 .sh-top{background:var(--c);color:#1b2a4a;text-align:center;padding:20px 16px 12px;border-bottom:3px solid var(--line);position:relative}
-.sh-top .big{font-size:96px;line-height:1.1}
+.sh-top .big{font-size:96px;line-height:1.1;margin-bottom:10px}
 .sh-top h2{font-size:32px;margin:2px 0 0;line-height:1.2}
 .close{
-  position:absolute;top:10px;right:10px;width:48px;height:48px;border-radius:50%;border:3px solid #1b2a4a;background:#fff;color:#1b2a4a;font-size:20px;
+  position:absolute;top:10px;right:10px;width:48px;height:48px;border-radius:50%;border:3px solid #1b2a4a;background:#fff;color:#1b2a4a;font-size:30px;line-height:1;padding:0;
 }
 .sh-body{padding:16px 18px 22px}
 .desc{font-size:21px;line-height:1.5;margin:0 0 12px}
@@ -159,6 +165,7 @@ ul.facts li{border:2px solid var(--line);border-radius:14px;padding:9px 14px;bac
 @media (max-width:520px){
   .brand .ttl{font-size:24px}.brand span.lg{font-size:34px}
   .sh-top .big{font-size:80px}.desc{font-size:19px}
+  .item{gap:18px}.lrow{gap:18px}.moon{gap:20px}.chead{gap:22px}.tile .em{margin-bottom:10px}.chip,.btn{gap:.4em}
 }
 @media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
 </style>
@@ -170,11 +177,11 @@ ul.facts li{border:2px solid var(--line);border-radius:14px;padding:9px 14px;bac
       <span class="lg">🦉</span>
       <span><span class="ttl">아빠표 백과사전</span><small>궁금한 건 뭐든 찾아보자!</small></span>
     </button>
-    <label class="search"><input id="q" type="search" placeholder="🔍 뭐가 궁금해? (예: 고래, 보름달)" autocomplete="off" enterkeyhint="search" aria-label="검색"></label>
+    <label class="search"><input id="q" type="search" placeholder="뭐가 궁금해? (예: 고래, 보름달)" autocomplete="off" enterkeyhint="search" aria-label="검색"></label>
   </div>
 </header>
 <main id="main"></main>
-<footer>아빠가 만든 백과사전 · 계속 자라는 중 🌱<br>빠진 게 있으면 아빠한테 알려줘!</footer>
+<footer><p id="ftxt" style="margin:0">아빠가 만든 백과사전 · 계속 자라는 중 🌱<br>빠진 게 있으면 아빠한테 알려줘!</p></footer>
 <div class="ov" id="ov" role="dialog" aria-modal="true"><div class="sheet" id="sheet"></div></div>
 
 <script>
@@ -398,6 +405,14 @@ const catById={};CATS.forEach(function(c){catById[c.id]=c;});
 const $=function(s){return document.querySelector(s);};
 const esc=function(s){return String(s).replace(/[&<>]/g,function(m){return {"&":"&amp;","<":"&lt;",">":"&gt;"}[m];});};
 const S={view:"home",cat:"",sub:"",q:""};
+let DET=null;
+let EMJ=null;
+try{EMJ=new RegExp("(?:[\\u{1F1E6}-\\u{1F1FF}]{2}|\\p{Extended_Pictographic}(?:\\uFE0F|\\u200D\\p{Extended_Pictographic}\\uFE0F?)*)","gu");}catch(e){EMJ=null;}
+function W(h){return EMJ?h.replace(EMJ,'<span class="ej">$&</span>'):h;}
+function snap(){return {view:S.view,cat:S.cat,sub:S.sub,q:S.q,d:DET,y:0};}
+function saveScroll(){try{var c=history.state;if(c){c.y=window.scrollY||0;history.replaceState(c,"");}}catch(e){}}
+function hpush(){try{history.pushState(snap(),"");}catch(e){}}
+function hrepl(){try{history.replaceState(snap(),"");}catch(e){}}
 
 let FAV=(function(){try{return JSON.parse(localStorage.getItem("abba-fav")||"[]");}catch(e){return [];}})();
 function saveFav(){try{localStorage.setItem("abba-fav",JSON.stringify(FAV));}catch(e){}}
@@ -499,16 +514,31 @@ function render(){
   else if(S.view==="kr")h=krHTML();
   else if(S.view==="fav")h=favHTML();
   else h=homeHTML();
-  $("#main").innerHTML=h;
+  $("#main").innerHTML=W(h);
 }
 function go(view,cat){
-  S.view=view;S.cat=cat||"";S.sub="";S.q="";$("#q").value="";
-  closeDetail();render();window.scrollTo(0,0);
+  cat=cat||"";
+  var same=(S.view===view&&S.cat===cat&&S.sub===""&&S.q===""&&DET===null);
+  hideDetail();
+  if(same){render();window.scrollTo(0,0);return;}
+  saveScroll();
+  S.view=view;S.cat=cat;S.sub="";S.q="";$("#q").value="";
+  render();window.scrollTo(0,0);hpush();
+}
+function applyState(st){
+  st=st||{view:"home",cat:"",sub:"",q:"",d:null,y:0};
+  S.view=st.view;S.cat=st.cat;S.sub=st.sub;S.q=st.q;
+  $("#q").value=st.q;
+  render();
+  if(st.d!=null){showDetail(st.d);}else{hideDetail();}
+  window.scrollTo(0,st.y||0);
 }
 
-function openDetail(i){
+function openDetail(i){saveScroll();showDetail(i);hpush();}
+function showDetail(i,keep){
+  DET=i;
   var e=D[i],c=catById[e.cat[0]],poison=e.cat.indexOf("poison")>-1;
-  var h='<div class="sh-top" style="--c:'+c.c+'"><button class="close" data-close aria-label="닫기">✕</button><div class="big">'+e.emo+'</div><h2>'+esc(e.name)+'</h2></div><div class="sh-body">';
+  var h='<div class="sh-top" style="--c:'+c.c+'"><button class="close" data-close aria-label="닫기">×</button><div class="big">'+e.emo+'</div><h2>'+esc(e.name)+'</h2></div><div class="sh-body">';
   if(poison)h+='<p class="warn">⚠️ 보기만 하고, 만지거나 먹지 않기! 궁금하면 어른한테 먼저 물어봐.</p>';
   h+='<p class="desc">'+esc(e.desc)+'</p>';
   if(e.lt)h+='<p class="life">⏳ 수명: <b>'+esc(e.lt)+'</b></p>';
@@ -516,12 +546,18 @@ function openDetail(i){
   if(e.tip)h+='<p class="tip">💡 '+esc(e.tip)+'</p>';
   h+='<div class="chips">'+e.cat.map(function(id){return '<button class="chip" data-go="cat" data-cat="'+id+'">'+catById[id].emo+' '+catById[id].name+'</button>';}).join("")+'</div>';
   h+='<div class="acts"><button class="btn" data-speak="'+i+'">🔊 읽어 줘</button><button class="btn" data-fav="'+i+'">'+(isFav(i)?"⭐ 보물함에 있어":"☆ 보물함에 넣기")+'</button></div></div>';
-  $("#sheet").innerHTML=h;$("#sheet").scrollTop=0;
+  var top=keep?$("#sheet").scrollTop:0;
+  $("#sheet").innerHTML=W(h);$("#sheet").scrollTop=top;
   $("#ov").classList.add("on");document.body.style.overflow="hidden";
 }
-function closeDetail(){
+function hideDetail(){
+  DET=null;
   $("#ov").classList.remove("on");document.body.style.overflow="";
   try{if(window.speechSynthesis)window.speechSynthesis.cancel();}catch(x){}
+}
+function closeDetail(){
+  if(DET===null)return;
+  if(history.state&&history.state.d!=null){history.back();}else{hideDetail();}
 }
 function speak(i){
   try{
@@ -542,9 +578,9 @@ document.addEventListener("click",function(ev){
   if(t.hasAttribute("data-speak")){speak(+t.getAttribute("data-speak"));return;}
   if(t.hasAttribute("data-fav")){
     var i=+t.getAttribute("data-fav");toggleFav(i);
-    t.textContent=isFav(i)?"⭐ 보물함에 있어":"☆ 보물함에 넣기";render();return;
+    showDetail(i,true);render();return;
   }
-  if(t.hasAttribute("data-sub")){S.sub=t.getAttribute("data-sub");render();return;}
+  if(t.hasAttribute("data-sub")){S.sub=t.getAttribute("data-sub");render();hrepl();return;}
   if(t.hasAttribute("data-go")){
     var g=t.getAttribute("data-go");
     if(g==="rand"){openDetail(Math.floor(Math.random()*D.length));return;}
@@ -552,8 +588,17 @@ document.addEventListener("click",function(ev){
   }
 });
 document.addEventListener("keydown",function(ev){if(ev.key==="Escape")closeDetail();});
-$("#q").addEventListener("input",function(ev){S.q=ev.target.value;render();});
+$("#q").addEventListener("input",function(ev){
+  var had=S.q.trim()!=="";
+  if(!had)saveScroll();
+  S.q=ev.target.value;render();
+  if(!had&&S.q.trim()!=="")hpush();else hrepl();
+});
+window.addEventListener("popstate",function(ev){applyState(ev.state);});
+try{if("scrollRestoration" in history)history.scrollRestoration="manual";}catch(e){}
+(function(){var ft=$("#ftxt");ft.innerHTML=W(ft.innerHTML);})();
 render();
+hrepl();
 </script>
 </body>
 </html>
