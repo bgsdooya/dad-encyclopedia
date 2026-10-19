@@ -120,6 +120,11 @@ h2.sec{font-size:24px;margin:6px 0 12px}
 .ej{display:inline-block;margin-right:.3em}
 .item .em .ej,.tile .em .ej,.chead .em .ej,.sh-top .big .ej,.lem .ej,.moon .me .ej,.qbtn>span .ej,.brand .lg .ej,.lrow .lem .ej{margin:0}
 .item .bd .ej{margin:0 0 0 .15em}
+.gh{font-family:var(--fh),sans-serif;font-weight:var(--fw);font-size:26px;margin:20px 0 8px}
+.nav{position:sticky;bottom:0;display:flex;gap:8px;align-items:center;background:var(--card);border-top:3px solid var(--line);padding:10px 12px}
+.navb{flex:1;min-width:0;border:3px solid var(--line);background:var(--sun);color:#1b2a4a;border-radius:16px;min-height:52px;padding:4px 12px;font-size:17px}
+.navb .nt{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pos{flex:none;font-size:14px;color:var(--muted)}
 .empty{padding:24px;text-align:center;color:var(--muted);border:3px dashed var(--line);border-radius:20px}
 
 .note{border:3px solid var(--line);border-radius:18px;background:var(--card);padding:10px 14px;margin:0 0 14px;font-size:16px;color:var(--muted)}
@@ -195,9 +200,9 @@ const CATS=[
  {id:"dino",emo:"🦖",name:"공룡",c:"#f2e1a0",d:"아주 아주 옛날 친구들"},
  {id:"plant",emo:"🌻",name:"식물",c:"#d4efb0",d:"꽃, 나무, 풀"},
  {id:"mushroom",emo:"🍄",name:"버섯",c:"#ffd0e0",d:"먹는 버섯 vs 독버섯",subs:["알아두기","먹는 버섯","독버섯"],
-  warn:"⚠️ 산이나 들에서 딴 버섯은 어른도 먹지 않아요. 독버섯은 모양·색으로 구별할 수 없어요. 버섯은 가게에서 산 것만 먹어요!"},
+  warn:"⚠️ 산이나 들에서 딴 버섯은 어른도 먹지 않아요. 독버섯은 모양·색으로 구별할 수 없어요. 여기에 없는 버섯도 함부로 만지거나 먹으면 안 돼요!"},
  {id:"poison",emo:"☠️",name:"독 있는 친구들",c:"#ffb3b3",d:"동물·식물·버섯 — 조심!",subs:["알아두기","동물","식물","버섯"],
-  warn:"⚠️ 보기만 하고 만지거나 먹지 않기! 모르는 풀·열매·버섯은 절대 입에 넣지 않아요."},
+  warn:"⚠️ 여기에 없다고 안전한 게 아니에요! 모르는 동물·풀·열매·버섯은 함부로 만지거나 먹지 말고, 어른한테 먼저 물어봐요."},
  {id:"space",emo:"🌕",name:"달·우주",c:"#cfd6ff",d:"달, 해, 별, 행성"},
  {id:"nature",emo:"🌈",name:"자연 현상",c:"#bfeede",d:"무지개, 번개, 눈, 화산"},
  {id:"body",emo:"🫀",name:"우리 몸",c:"#ffd6e8",d:"심장, 뼈, 뇌, 똥까지"},
@@ -221,7 +226,7 @@ E("insect","🙏","사마귀","앞다리를 모아 기도하는 것 같은 곤�
 E("insect","🦗","메뚜기·귀뚜라미","폴짝폴짝 뛰고, 날개를 비벼 노래하는 곤충이야.",["귀뚜라미 수컷이 날개를 비벼서 소리 내","귀뚜라미의 귀는 앞다리 무릎쯤에 있어","메뚜기는 뒷다리 힘으로 아주 멀리 점프해"],{kr:1,tip:"가을밤 풀숲에서 귀뚤귀뚤 노랫소리가 들려."});
 E("insect","⏳","하루살이","어른이 된 뒤 아주 짧게 사는 곤충이야.",["어른은 몇 시간~며칠만 살아","어른이 되면 입이 작아져서 먹지 못해","물속 애벌레로는 1년쯤 살아"],{life:.003,lt:"어른은 하루 안팎",kr:1,tip:"어른 시절은 짧지만 애벌레 때는 훨씬 길어."});
 E("insect","🦟","모기","피를 빠는 건 암컷만이야. 수컷은 꽃즙을 먹어.",["알을 만들 영양분이 필요해서 암컷이 피를 먹어","내쉬는 숨(이산화탄소)과 체온으로 사람을 찾아","어른은 몇 주 살아"],{kr:1,tip:"물린 곳은 긁지 말고 어른한테 말해 줘."});
-E("insect,poison","🐝","말벌","크고 독침이 센 벌이야. 벌집을 건드리면 떼로 공격해!",["장수말벌은 세계에서 가장 큰 말벌 무리 중 하나야","가을에 특히 많고 위험해","벌 독에 알레르기가 있으면 한 번만 쏘여도 위험할 수 있어"],{s:{poison:"동물"},kr:1,tip:"벌이 오면 소리 지르거나 손을 휘젓지 말고, 조용히 천천히 멀어져요."});
+E("insect,poison","🐝","말벌","크고 독침이 센 벌이야. 벌집을 건드리면 떼로 공격해!",["장수말벌은 세계에서 가장 큰 말벌 무리 중 하나야","7~10월, 특히 8~9월에 쏘임 사고가 많아","벌 독에 알레르기가 있으면 한 번만 쏘여도 위험할 수 있어"],{s:{poison:"동물"},kr:1,tip:"벌집은 절대 건드리지 않기! 혹시 건드렸다면 몸을 낮추고 20 m 넘게 빨리 달아난 뒤 어른한테 알려요."});
 E("insect,poison","🐛","쐐기벌레","털·가시에 독이 있는 나방 애벌레야.",["초록 몸에 가시 같은 털이 있어","닿으면 따끔하고 가려워","나뭇잎 위에서 지내"],{s:{poison:"동물"},kr:1,tip:"나무나 잎을 만지다 따끔하면 쐐기벌레일 수 있어. 어른한테 말해요."});
 
 /* ===== 절지동물 ===== */
@@ -328,10 +333,10 @@ E("plant","🌺","무궁화","우리나라의 나라꽃이야.",["여름부터 �
 E("plant","🌸","진달래 (참꽃)","봄에 산을 분홍으로 물들이는 꽃이야.",["옛날엔 꽃잎을 부쳐 먹는 ‘화전’도 만들었어","비슷한 철쭉은 독이 있어서 헷갈리면 안 돼","잎이 나기 전에 꽃이 먼저 피어"],{kr:1,tip:"산에서 꽃은 보기만! 먹는 건 어른이 확실히 아는 것만."});
 E("plant","🌸","벚꽃","4월 초에 한꺼번에 피는 봄꽃이야.",["꽃이 피고 며칠 만에 꽃비처럼 떨어져","열매 버찌는 새들이 좋아해","우리나라 봄 나들이의 주인공이야"],{kr:1});
 E("plant","🌱","씨앗","작은 씨앗 하나가 큰 나무가 돼.",["도토리는 참나무의 씨앗이야 (다람쥐가 좋아해)","세계에서 가장 큰 씨앗은 20 kg쯤 나가는 ‘코코 드 메르’야","어떤 씨앗은 몇 년을 기다렸다 싹이 터"],{kr:1});
-E("plant,poison","🌺","철쭉","진달래와 닮았지만 독이 있어!",["진달래는 ‘참꽃’, 철쭉은 ‘개꽃’이라고 불러","철쭉은 먹으면 아플 수 있어","잎이 먼저 나고 꽃이 늦게 피어"],{s:{poison:"식물"},kr:1});
+E("plant,poison","🌺","철쭉","진달래와 닮았지만 독이 있어!",["진달래는 ‘참꽃’, 철쭉은 ‘개꽃’이라고 불러","철쭉은 독이 있어서 먹으면 안 돼","진달래보다 늦게 피고, 잎이 먼저 나거나 꽃과 같이 나"],{s:{poison:"식물"},kr:1});
 
 /* ===== 버섯 ===== */
-E("mushroom","🍄","버섯이 뭐야?","식물도 동물도 아닌 ‘균류’(곰팡이 가족)야.",["우리가 보는 버섯은 열매 같은 부분이고, 몸(균사)은 땅속·나무속에 있어","낙엽과 죽은 나무를 분해하는 숲 청소부야","세계에서 가장 큰 생물 중 하나가 땅속 버섯(꿀버섯) 균사야 — 축구장 1천 개가 넘는 넓이!"],{s:{mushroom:"알아두기"},tip:"버섯은 가게에서 산 것만 먹어요. 산에서 딴 버섯은 어른도 함부로 먹지 않아요."});
+E("mushroom","🍄","버섯이 뭐야?","식물도 동물도 아닌 ‘균류’(곰팡이 가족)야.",["우리가 보는 버섯은 열매 같은 부분이고, 몸(균사)은 땅속·나무속에 있어","낙엽과 죽은 나무를 분해하는 숲 청소부야","우리나라 버섯은 2,000종이 넘는데, 먹어도 된다고 확인된 건 18%쯤이야","세계에서 가장 큰 생물 중 하나가 땅속 버섯(꿀버섯) 균사야 — 축구장 1천 개가 넘는 넓이!"],{s:{mushroom:"알아두기"},tip:"버섯은 가게에서 산 것만 먹어요. 산에서 딴 버섯은 어른도 먹지 않아요."});
 E("mushroom","🍄","표고버섯","국물 요리에 많이 넣는 버섯이야.",["참나무 원목이나 톱밥에서 키워","햇볕을 쬐면 비타민 D가 늘어나","말리면 향이 더 진해져"],{s:{mushroom:"먹는 버섯"},kr:1});
 E("mushroom","🍄","느타리버섯","나무에 겹겹이 자라는 버섯이야.",["굴을 닮아 영어로 ‘굴 버섯’이라고 불러","결을 따라 쭉쭉 찢어져","볶음·전골에 많이 써"],{s:{mushroom:"먹는 버섯"},kr:1});
 E("mushroom","🍄","팽이버섯","가늘고 길쭉한 흰 버섯이야.",["가게에서 파는 건 어둡게 키워서 하얗고 길쭉해","야생 팽이버섯은 갈색이야","다발로 자라"],{s:{mushroom:"먹는 버섯"},kr:1});
@@ -339,22 +344,22 @@ E("mushroom","🍄","양송이버섯","동그란 갓의 부드러운 버섯이�
 E("mushroom","🍄","새송이버섯","통통하고 쫄깃한 버섯이야.",["이름은 ‘새송이’지만 느타리 가족인 큰느타리야","줄기가 통통해서 구우면 맛있어","가게에서 쉽게 살 수 있어"],{s:{mushroom:"먹는 버섯"},kr:1});
 E("mushroom","🍄","송이버섯","가을 소나무 숲에서 나는 향 좋은 버섯이야.",["살아 있는 소나무 뿌리와 함께 살아서 사람이 마음대로 키우기 어려워","향이 좋고 아주 비싸","가을에 소나무 숲에서 나"],{s:{mushroom:"먹는 버섯"},kr:1});
 E("mushroom","🍄","목이버섯","귀를 닮은 쫄깃한 버섯이야.",["‘나무 귀’라는 뜻이야","말리면 딱딱, 물에 불리면 쫄깃","중국 요리에 자주 써"],{s:{mushroom:"먹는 버섯"}});
-E("mushroom,poison","🍄","광대버섯","빨간 갓에 흰 점, 동화책에 자주 나오는 독버섯이야.",["먹으면 구토·환각 같은 중독이 와","옛날 유럽에선 이 버섯으로 파리를 쫓았어","예뻐 보여도 절대 먹으면 안 돼"],{s:{mushroom:"독버섯",poison:"버섯"},kr:1});
-E("mushroom,poison","🍄","독우산광대버섯","하얀 갓과 줄기를 가진 아주 위험한 독버섯이야.",["치명적인 독(아마톡신)이 있어","한 개만 먹어도 목숨이 위험할 수 있어","우리나라 독버섯 중독 사고의 큰 원인 중 하나야"],{s:{mushroom:"독버섯",poison:"버섯"},kr:1,tip:"하얀색이라 식용버섯으로 착각하기 쉬워서 더 위험해."});
-E("mushroom,poison","🍄","붉은사슴뿔버섯","불꽃·산호처럼 빨갛고 길쭉한 독버섯이야.",["닿기만 해도 피부가 상할 수 있어","먹으면 아주 위험해","보면 만지지 말고 지나가기"],{s:{mushroom:"독버섯",poison:"버섯"},kr:1});
+E("mushroom,poison","🍄","빨간 갓에 흰 점 독버섯","동화책에 자주 나오는 독버섯이야. (광대버섯 무리)",["먹으면 구토, 헛것이 보이는 환각, 정신을 잃는 중독이 올 수 있어","영어 이름은 ‘파리 버섯’이야. 옛날 유럽에선 파리를 잡는 데 썼대","예뻐 보여도 절대 먹으면 안 돼"],{s:{mushroom:"독버섯",poison:"버섯"}});
+E("mushroom,poison","🍄","독우산광대버섯","하얀 갓과 줄기를 가진 아주 위험한 독버섯이야.",["치명적인 독(아마톡신)이 있어","아주 적은 양으로도 목숨이 위험할 수 있어","우리나라 독버섯 중독 사고의 큰 원인 중 하나야"],{s:{mushroom:"독버섯",poison:"버섯"},kr:1,tip:"먹는 흰주름버섯과 닮아서 더 위험해."});
+E("mushroom,poison","🍄","붉은사슴뿔버섯","불꽃·산호처럼 빨갛고 길쭉한 독버섯이야.",["아주 적은 양만 먹어도 목숨이 위험할 만큼 독이 강해","약으로 쓰는 영지버섯(어린 것)과 닮아서 잘못 먹는 사고가 있어","손으로 만지지도 말고 눈으로만 보기"],{s:{mushroom:"독버섯",poison:"버섯"},kr:1});
 E("mushroom,poison","🍄","화경버섯","어두운 곳에서 희미하게 빛나는 독버섯이야.",["표고버섯·느타리와 닮아서 잘못 먹는 사고가 있어","나무에 겹쳐서 자라","빛이 난다고 먹는 게 아니야"],{s:{mushroom:"독버섯",poison:"버섯"},kr:1});
-E("mushroom,poison","🍄","노란다발버섯","썩은 나무에 노랗게 무리 지어 나는 독버섯이야.",["먹으면 배탈 같은 중독이 와","쓴맛이 나","무리 지어 자라"],{s:{mushroom:"독버섯",poison:"버섯"},kr:1});
-E("mushroom,poison","⚠️","독버섯 구별법?","‘색이 화려하면 독버섯’, ‘세로로 찢어지면 먹는 버섯’ — 전부 틀린 말이야!",["모양·색·냄새로는 전문가도 헷갈려","벌레가 먹었다고, 은수저가 안 변한다고 안전한 게 아니야","가장 안전한 방법은 산에서 딴 버섯은 먹지 않는 것"],{s:{mushroom:"알아두기",poison:"알아두기"}});
+E("mushroom,poison","🍄","노란다발버섯","썩은 나무에 노랗게 무리 지어 나는 독버섯이야.",["먹으면 배탈 같은 중독이 와","나무 그루터기 근처에서 볼 수 있어","다발로 모여서 자라"],{s:{mushroom:"독버섯",poison:"버섯"},kr:1});
+E("mushroom,poison","⚠️","독버섯 구별법?","‘색이 화려하면 독버섯’, ‘세로로 찢으면 먹는 버섯’ — 전부 틀린 말이야!",["모양·색·냄새로는 전문가도 헷갈려","벌레 먹은 흔적이나 은수저 색 변화로도 알 수 없어","익혀도 독은 없어지지 않아","가장 안전한 방법은 산에서 딴 버섯은 먹지 않는 것"],{s:{mushroom:"알아두기",poison:"알아두기"}});
 
 /* ===== 독 있는 친구들 (식물 · 알아두기) ===== */
-E("poison","☠️","독에는 두 종류가 있어","쏘거나 물어서 넣는 독, 먹거나 만지면 아픈 독 — 둘 다 조심해야 해.",["쏘거나 무는 독: 벌, 뱀, 전갈, 지네","먹거나 만지면 아픈 독: 복어, 독버섯, 독 있는 식물","독은 ‘나한테 오지 마!’ 하는 방어 무기이기도 해"],{s:{poison:"알아두기"},tip:"독 있는 친구를 보면 가까이 가지 말고 어른한테 알려요."});
-E("poison","🚑","독이 있는 걸 만났을 땐","만지지 말고, 어른한테 바로 알려!",["모르는 풀·열매·버섯은 절대 입에 넣지 않기","쏘이거나 물리면 바로 어른에게 말하기","먹은 것 같으면 억지로 토하게 하지 말고 119나 병원에 바로 연락 (먹은 것 사진·남은 것 챙기기)"],{s:{poison:"알아두기"},tip:"아빠 노트: 화분(스킨답서스 등)·약·세제는 아이 손이 닿지 않는 곳에 두기."});
+E("poison","☠️","독에는 두 종류가 있어","쏘거나 물어서 넣는 독, 먹거나 만지면 아픈 독 — 둘 다 조심해야 해.",["쏘거나 무는 독: 벌, 뱀, 전갈, 지네","먹거나 만지면 아픈 독: 복어, 독버섯, 독 있는 식물","독은 ‘나한테 오지 마!’ 하는 방어 무기이기도 해","여기에 없는 친구도 함부로 만지지 말고, 어른한테 먼저 물어봐"],{s:{poison:"알아두기"},tip:"독 있는 친구를 보면 가까이 가지 말고 어른한테 알려요."});
+E("poison","🚑","독이 있는 걸 만났을 땐","만지지 말고, 어른한테 바로 알려!",["모르는 풀·열매·버섯은 절대 입에 넣지 않기","쏘이거나 물리면 바로 어른에게 말하기","먹은 것 같으면 바로 119나 병원에 연락해. 먹은 것·남은 것·사진을 챙겨 가면 도움이 돼","여기에 없는 친구도 함부로 만지지 말고, 어른한테 먼저 물어봐"],{s:{poison:"알아두기"},tip:"아빠 노트: 화분(스킨답서스 등)·약·세제는 아이 손이 닿지 않는 곳에 두기."});
 E("plant,poison","💜","투구꽃","옛날 투구를 닮은 보라색 꽃이야.",["뿌리에 아주 강한 독이 있어","약으로 쓰이기도 하지만 전문가만 다뤄","가을에 피어"],{s:{poison:"식물"},kr:1});
 E("plant,poison","🌼","독말풀","나팔 모양 꽃이 피는 독 있는 풀이야.",["잎과 씨앗에 독이 있어","저녁에 활짝 피는 꽃이야","길가나 빈터에 자라기도 해"],{s:{poison:"식물"}});
-E("plant,poison","🌸","협죽도","꽃이 예쁜데 잎·줄기·꽃 모두 독이 있는 나무야.",["분홍·흰 꽃이 여름에 피어","남쪽 지방 길가나 정원에 심기도 해","가지를 꼬치나 젓가락으로 쓰면 안 돼"],{s:{poison:"식물"},kr:1});
+E("plant,poison","🌸","협죽도","꽃이 예쁜데 잎·줄기·꽃 모두 독이 있는 나무야.",["분홍·흰 꽃이 여름에 피어","제주·부산 같은 남쪽 해안 길가에도 심어져 있어","잎·줄기·꽃·수액 모두 독이 있어서 가지를 꼬치나 땔감으로 쓰면 안 돼"],{s:{poison:"식물"},kr:1});
 E("plant,poison","🌼","수선화","노란 봄꽃이지만 독이 있어.",["알뿌리가 양파와 비슷해서 잘못 먹는 사고가 있어","잎도 부추와 헷갈려","꽃은 보기만 하기"],{s:{poison:"식물"},kr:1});
-E("plant,poison","🌿","박새","봄 산나물과 닮은 독 있는 풀이야.",["어린잎이 원추리·산마늘과 닮았어","먹으면 위험한 독이 있어","산나물은 전문가가 확인해 준 것만 먹기"],{s:{poison:"식물"},kr:1});
-E("plant,poison","🌿","피마자 (아주까리)","잎은 나물, 씨앗은 독이 있는 식물이야.",["씨앗에 아주 강한 독(리신)이 있어","옛날엔 씨앗으로 기름을 짜서 썼어","시골 밭가에서 볼 수 있어"],{s:{poison:"식물"},kr:1});
+E("plant,poison","🌿","박새","봄 산나물과 닮은 독 있는 풀이야.",["봄에 나오는 어린잎이 산마늘(명이나물)과 많이 닮았어","먹으면 구토, 혈변 같은 중독이 올 수 있어","산나물은 전문가가 확인해 준 것만 먹기"],{s:{poison:"식물"},kr:1});
+E("plant,poison","🌿","피마자 (아주까리)","씨앗에 아주 강한 독이 있는 식물이야.",["씨앗에 아주 강한 독(리신)이 있어","옛날엔 씨앗으로 기름을 짜서 썼어","시골 밭가에서 볼 수 있어"],{s:{poison:"식물"},kr:1});
 E("plant,poison","🪴","스킨답서스","집에서 많이 키우는 화분 덩굴식물이야.",["잎·줄기를 씹으면 입이 따갑고 부어","아기와 반려동물 손이 닿지 않게 두기","꽃집에서 쉽게 살 수 있어"],{s:{poison:"식물"},kr:1});
 
 /* ===== 달·우주 ===== */
@@ -406,6 +411,13 @@ const $=function(s){return document.querySelector(s);};
 const esc=function(s){return String(s).replace(/[&<>]/g,function(m){return {"&":"&amp;","<":"&lt;",">":"&gt;"}[m];});};
 const S={view:"home",cat:"",sub:"",q:""};
 let DET=null;
+let CUR_LIST=[];
+var SEEN=(function(){try{return JSON.parse(localStorage.getItem("abba-seen")||"{}");}catch(e){return {};}})();
+function saveSeen(){try{localStorage.setItem("abba-seen",JSON.stringify(SEEN));}catch(e){}}
+function bump(i){var n=D[i].name;SEEN[n]=(SEEN[n]||0)+1;saveSeen();}
+var CHO="ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ";
+function choOf(n){var c=n.charCodeAt(0);if(c>=0xAC00&&c<=0xD7A3)return CHO.charAt(Math.floor((c-0xAC00)/588));return "기타";}
+function choKey(c){return c==="기타"?99:CHO.indexOf(c);}
 let EMJ=null;
 try{EMJ=new RegExp("(?:[\\u{1F1E6}-\\u{1F1FF}]{2}|\\p{Extended_Pictographic}(?:\\uFE0F|\\u200D\\p{Extended_Pictographic}\\uFE0F?)*)","gu");}catch(e){EMJ=null;}
 function W(h){return EMJ?h.replace(EMJ,'<span class="ej">$&</span>'):h;}
@@ -431,20 +443,23 @@ function moonInfo(){
   return {emo:p[1],name:p[2],near:Math.abs(age-14.765)<=1.2,n:Math.round(nf),md:(d.getMonth()+1)+"월 "+d.getDate()+"일"};
 }
 
-function itemHTML(i,cid){
+function itemHTML(i,cid,extra){
   var e=D[i],c=catById[cid||e.cat[0]].c,bd="";
   if(isFav(i))bd+="⭐";
   if(e.kr)bd+="🇰🇷";
   if(e.cat.indexOf("poison")>-1)bd+="⚠️";
+  if(extra)bd+=" "+extra;
   return '<button class="item" data-open="'+i+'" style="--c:'+c+'"><span class="em">'+e.emo+'</span><span class="tx"><b>'+esc(e.name)+'</b><small>'+esc(e.desc)+'</small></span><span class="bd">'+bd+'</span></button>';
 }
 function listHTML(ids,cid){
+  CUR_LIST=ids.slice();
   if(!ids.length)return '<div class="empty">아직 없어요. 다른 말로 찾아볼까요?</div>';
   return '<div class="list">'+ids.map(function(i){return itemHTML(i,cid);}).join("")+'</div>';
 }
 function backBtn(){return '<button class="back" data-go="home">← 처음으로</button>';}
 
 function homeHTML(){
+  CUR_LIST=[];
   var m=moonInfo();
   var moonTxt=m.near?"오늘 밤은 보름달이야! 소원 하나 빌어 볼까?":"보름달까지 약 "+m.n+"일 ("+m.md+"쯤)";
   var h='<button class="moon" data-openname="보름달에 왜 소원을 빌까?"><span class="me">'+m.emo+'</span><span><b>오늘의 달: '+m.name+'</b><span class="s">'+moonTxt+'</span><span class="s">누르면 보름달 소원 이야기!</span></span></button>';
@@ -452,6 +467,8 @@ function homeHTML(){
    +'<button class="qbtn" data-go="rand"><span>🎲</span><b>오늘의 발견</b></button>'
    +'<button class="qbtn" data-go="life"><span>🏆</span><b>수명 대결</b></button>'
    +'<button class="qbtn" data-go="kr"><span>🇰🇷</span><b>우리나라 친구들</b></button>'
+   +'<button class="qbtn" data-go="abc"><span>🔤</span><b>가나다 순</b></button>'
+   +'<button class="qbtn" data-go="seen"><span>👀</span><b>자주 본 친구</b></button>'
    +'<button class="qbtn" data-go="fav"><span>⭐</span><b>내 보물함</b></button></div>';
   h+='<h2 class="sec">뭐가 궁금해?</h2><div class="tiles">'+CATS.map(function(c){
     return '<button class="tile" data-go="cat" data-cat="'+c.id+'" style="--c:'+c.c+'"><span class="em">'+c.emo+'</span><b>'+c.name+'</b><small>'+c.d+'</small><i>'+idsOf(c.id).length+'개</i></button>';
@@ -476,6 +493,7 @@ function catHTML(){
 function lifeHTML(){
   var ids=[];D.forEach(function(e,i){if(e.life!=null)ids.push(i);});
   ids.sort(function(a,b){return D[a].life-D[b].life;});
+  CUR_LIST=ids.slice();
   var mx=Math.sqrt(D[ids[ids.length-1]].life);
   var h=backBtn()+'<div class="chead"><span class="em">🏆</span><div><h2>수명 대결</h2><p>짧게 사는 친구 → 오래 사는 친구 순서야</p></div></div>';
   h+='<p class="note">막대는 ‘오래 사는 편’을 대략 나타낸 거야. 종류와 환경에 따라 달라져. 막대 길이는 보기 좋게 줄여서 그렸어. 사람은 주황색이야!</p><div class="lrows">';
@@ -484,6 +502,37 @@ function lifeHTML(){
     return '<button class="lrow'+(e.name==="사람"?" me":"")+'" data-open="'+i+'"><span class="lem">'+e.emo+'</span><span class="lbody"><span class="lname">'+esc(e.ln||e.name)+'</span><span class="bar"><i style="width:'+w+'%"></i></span><span class="ltext">'+esc(e.lt)+'</span></span></button>';
   }).join("")+'</div>';
   h+='<p class="note" style="margin-top:14px">🌳 나무는 더 오래 살아! 은행나무 중에는 1,000년이 넘은 나무도 있어.</p>';
+  return h;
+}
+function abcHTML(){
+  var ids=D.map(function(e,i){return i;}).sort(function(a,b){return D[a].name.localeCompare(D[b].name,"ko");});
+  var present=[];
+  ids.forEach(function(i){var c=choOf(D[i].name);if(present.indexOf(c)<0)present.push(c);});
+  present.sort(function(a,b){return choKey(a)-choKey(b);});
+  var h=backBtn()+'<div class="chead"><span class="em">🔤</span><div><h2>가나다 순</h2><p>첫 글자로 찾아봐</p></div></div>';
+  h+='<div class="chips"><button class="chip" data-sub="" aria-pressed="'+(S.sub===""?"true":"false")+'">전체</button>'
+    +present.map(function(c){return '<button class="chip" data-sub="'+c+'" aria-pressed="'+(S.sub===c?"true":"false")+'">'+c+'</button>';}).join("")+'</div>';
+  if(S.sub)ids=ids.filter(function(i){return choOf(D[i].name)===S.sub;});
+  CUR_LIST=ids.slice();
+  var last="",open=false;
+  ids.forEach(function(i){
+    var c=choOf(D[i].name);
+    if(c!==last){if(open)h+='</div>';h+='<h3 class="gh">'+c+'</h3><div class="list">';open=true;last=c;}
+    h+=itemHTML(i);
+  });
+  if(open)h+='</div>';
+  return h;
+}
+function seenHTML(){
+  var ids=[];
+  D.forEach(function(e,i){if(SEEN[e.name])ids.push(i);});
+  ids.sort(function(a,b){return (SEEN[D[b].name]-SEEN[D[a].name])||D[a].name.localeCompare(D[b].name,"ko");});
+  ids=ids.slice(0,40);
+  CUR_LIST=ids.slice();
+  var h=backBtn()+'<div class="chead"><span class="em">👀</span><div><h2>자주 본 친구</h2><p>이 기기에서 많이 열어 본 순서야</p></div></div>';
+  if(!ids.length)return h+'<div class="empty">아직 기록이 없어요.<br>친구들을 구경하면 여기에 쌓여요!</div>';
+  h+='<div class="list">'+ids.map(function(i){return itemHTML(i,null,"👀 "+SEEN[D[i].name]+"번");}).join("")+'</div>';
+  h+='<p style="text-align:center;margin-top:18px"><button class="chip" data-clearseen>기록 지우기</button></p>';
   return h;
 }
 function krHTML(){
@@ -513,6 +562,8 @@ function render(){
   else if(S.view==="life")h=lifeHTML();
   else if(S.view==="kr")h=krHTML();
   else if(S.view==="fav")h=favHTML();
+  else if(S.view==="abc")h=abcHTML();
+  else if(S.view==="seen")h=seenHTML();
   else h=homeHTML();
   $("#main").innerHTML=W(h);
 }
@@ -534,18 +585,30 @@ function applyState(st){
   window.scrollTo(0,st.y||0);
 }
 
-function openDetail(i){saveScroll();showDetail(i);hpush();}
+function openDetail(i){bump(i);saveScroll();showDetail(i);hpush();}
+function navList(i){return CUR_LIST.indexOf(i)>-1?CUR_LIST:idsOf(D[i].cat[0]);}
+function neighbor(i,d){var L=navList(i),n=L.length;if(n<2)return -1;var p=L.indexOf(i);return L[(p+d+n)%n];}
+function stepDetail(d){
+  if(DET===null)return;
+  var to=neighbor(DET,d);if(to<0)return;
+  bump(to);showDetail(to);hrepl();
+}
 function showDetail(i,keep){
   DET=i;
   var e=D[i],c=catById[e.cat[0]],poison=e.cat.indexOf("poison")>-1;
   var h='<div class="sh-top" style="--c:'+c.c+'"><button class="close" data-close aria-label="닫기">×</button><div class="big">'+e.emo+'</div><h2>'+esc(e.name)+'</h2></div><div class="sh-body">';
-  if(poison)h+='<p class="warn">⚠️ 보기만 하고, 만지거나 먹지 않기! 궁금하면 어른한테 먼저 물어봐.</p>';
+  if(poison)h+='<p class="warn">⚠️ 보기만 하고, 만지거나 먹지 않기! 여기에 없는 것도 모르면 함부로 만지지 말고 어른한테 먼저 물어봐.</p>';
   h+='<p class="desc">'+esc(e.desc)+'</p>';
   if(e.lt)h+='<p class="life">⏳ 수명: <b>'+esc(e.lt)+'</b></p>';
   h+='<ul class="facts">'+e.facts.map(function(f){return '<li>'+esc(f)+'</li>';}).join("")+'</ul>';
   if(e.tip)h+='<p class="tip">💡 '+esc(e.tip)+'</p>';
   h+='<div class="chips">'+e.cat.map(function(id){return '<button class="chip" data-go="cat" data-cat="'+id+'">'+catById[id].emo+' '+catById[id].name+'</button>';}).join("")+'</div>';
   h+='<div class="acts"><button class="btn" data-speak="'+i+'">🔊 읽어 줘</button><button class="btn" data-fav="'+i+'">'+(isFav(i)?"⭐ 보물함에 있어":"☆ 보물함에 넣기")+'</button></div></div>';
+  var pv=neighbor(i,-1),nx=neighbor(i,1);
+  if(pv>-1){
+    var L=navList(i);
+    h+='<div class="nav"><button class="navb" data-nav="-1"><span class="nt">← '+esc(D[pv].name)+'</span></button><span class="pos">'+(L.indexOf(i)+1)+' / '+L.length+'</span><button class="navb" data-nav="1"><span class="nt">'+esc(D[nx].name)+' →</span></button></div>';
+  }
   var top=keep?$("#sheet").scrollTop:0;
   $("#sheet").innerHTML=W(h);$("#sheet").scrollTop=top;
   $("#ov").classList.add("on");document.body.style.overflow="hidden";
@@ -570,8 +633,10 @@ function speak(i){
 }
 
 document.addEventListener("click",function(ev){
-  var t=ev.target.closest("[data-open],[data-openname],[data-go],[data-sub],[data-close],[data-speak],[data-fav]");
+  var t=ev.target.closest("[data-open],[data-openname],[data-go],[data-sub],[data-close],[data-speak],[data-fav],[data-nav],[data-clearseen]");
   if(!t){if(ev.target.id==="ov")closeDetail();return;}
+  if(t.hasAttribute("data-nav")){stepDetail(+t.getAttribute("data-nav"));return;}
+  if(t.hasAttribute("data-clearseen")){if(window.confirm("자주 본 친구 기록을 지울까요?")){SEEN={};saveSeen();render();}return;}
   if(t.hasAttribute("data-close")){closeDetail();return;}
   if(t.hasAttribute("data-open")){openDetail(+t.getAttribute("data-open"));return;}
   if(t.hasAttribute("data-openname")){var k=idxByName(t.getAttribute("data-openname"));if(k>-1)openDetail(k);return;}
@@ -587,7 +652,19 @@ document.addEventListener("click",function(ev){
     go(g,t.getAttribute("data-cat")||"");
   }
 });
-document.addEventListener("keydown",function(ev){if(ev.key==="Escape")closeDetail();});
+document.addEventListener("keydown",function(ev){
+  if(ev.key==="Escape")closeDetail();
+  else if(ev.key==="ArrowLeft")stepDetail(-1);
+  else if(ev.key==="ArrowRight")stepDetail(1);
+});
+(function(){
+  var sh=$("#sheet"),x0=0,y0=0;
+  sh.addEventListener("touchstart",function(e){var t=e.touches[0];x0=t.clientX;y0=t.clientY;},{passive:true});
+  sh.addEventListener("touchend",function(e){
+    var t=e.changedTouches[0],dx=t.clientX-x0,dy=t.clientY-y0;
+    if(Math.abs(dx)>80&&Math.abs(dy)<50)stepDetail(dx<0?1:-1);
+  },{passive:true});
+})();
 $("#q").addEventListener("input",function(ev){
   var had=S.q.trim()!=="";
   if(!had)saveScroll();
