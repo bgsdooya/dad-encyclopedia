@@ -209,6 +209,7 @@ const CATS=[
  {id:"why",emo:"❓",name:"왜 그럴까?",c:"#ffe58f",d:"궁금한 건 못 참아!"}
 ];
 const D=[];
+const SEAHORSE="<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' width='1em' height='1em' style='display:block;margin:auto'><g stroke-linecap='round' stroke-linejoin='round'><g fill='#1b2a4a' stroke='#1b2a4a'><path d='M30 22 C36 28 32 38 35 44' fill='none' stroke-width='15'/><path d='M35 44 C38 55 50 55 49 46 C48 40 41 41 42 47' fill='none' stroke-width='10.5'/><ellipse cx='30' cy='34' rx='11' ry='12' stroke-width='1'/><circle cx='28' cy='17' r='11' stroke-width='1'/><path d='M22 20 L12 22.5' fill='none' stroke-width='8'/><ellipse cx='46' cy='32' rx='5.5' ry='8' transform='rotate(15 46 32)' stroke-width='1'/><circle cx='30' cy='6.5' r='3.5'/><circle cx='37' cy='10' r='3.5'/></g><g fill='#ffb03b' stroke='#ffb03b'><path d='M30 22 C36 28 32 38 35 44' fill='none' stroke-width='9.5'/><path d='M35 44 C38 55 50 55 49 46 C48 40 41 41 42 47' fill='none' stroke-width='5.2'/><ellipse cx='30' cy='34' rx='9' ry='10' stroke-width='1'/><circle cx='28' cy='17' r='8.8' stroke-width='1'/><path d='M22 20 L12 22.5' fill='none' stroke-width='4'/><ellipse cx='46' cy='32' rx='3.6' ry='6.2' transform='rotate(15 46 32)' fill='#ffd166' stroke='#ffd166' stroke-width='1'/><circle cx='30' cy='6.5' r='1.8'/><circle cx='37' cy='10' r='1.8'/></g><g fill='none' stroke='#ffe3a3' stroke-width='1.8'><path d='M23 31 Q30 34 37 30'/><path d='M22 37 Q30 40 37 36'/><path d='M25 43 Q30 45 36 42'/></g></g><circle cx='26' cy='15.5' r='2.4' fill='#1b2a4a'/><circle cx='25.2' cy='14.7' r='.8' fill='#fff'/></svg>";
 function E(c,emo,name,desc,facts,o){D.push(Object.assign({cat:c.split(","),emo:emo,name:name,desc:desc,facts:facts},o||{}));}
 
 /* ===== 곤충 ===== */
@@ -300,7 +301,7 @@ E("sea,poison","🪼","해파리","뇌·심장·뼈가 없는 부들부들한 �
 E("sea","🐙","문어","똑똑한 팔 8개 바다 친구야.",["심장이 3개고 피는 파란색이야","뼈가 없어서 좁은 틈으로 쏙 들어가","몸 색을 바꿔서 숨어"],{life:3,lt:"대부분 1~5년",kr:1});
 E("sea,poison","🐙","파란고리문어","작지만 아주 위험한 문어야.",["손바닥만 한 크기야","화나면 파란 고리 무늬가 반짝여","따뜻한 바다에 살고 아주 강한 독이 있어"],{s:{poison:"동물"},tip:"바닷가에서 작은 문어를 만나도 함부로 만지지 않기!"});
 E("sea","🦑","오징어","먹물을 뿜는 바다 친구야.",["심장이 3개야","대왕오징어는 눈이 접시만큼 커","대부분 1~2년쯤 살아"],{life:1,lt:"대부분 약 1년",kr:1});
-E("sea","🐴","해마","아빠가 아기를 낳는 신기한 물고기야!",["수컷 배의 주머니에서 새끼가 태어나","헤엄은 서툴러서 꼬리로 풀을 잡고 있어","말처럼 생긴 머리를 가졌어"],{tip:"해마는 아빠가 아기를 돌보는 대표 동물이야."});
+E("sea",SEAHORSE,"해마","아빠가 아기를 낳는 신기한 물고기야!",["수컷 배의 주머니에서 새끼가 태어나","헤엄은 서툴러서 꼬리로 풀을 잡고 있어","말처럼 생긴 머리를 가졌어"],{tip:"해마는 아빠가 아기를 돌보는 대표 동물이야."});
 E("sea,poison","🐡","복어","위험하면 몸을 빵빵하게 부풀리는 물고기야.",["내장과 알 등에 청산가리보다 훨씬 강한 독이 있어","물을 마셔서 몸을 부풀려","복어요리는 자격을 가진 요리사만 할 수 있어"],{s:{poison:"동물"},kr:1});
 E("sea","🐠","흰동가리","말미잘 속에서 사는 주황 물고기야.",["말미잘의 독침에 쏘이지 않아","말미잘과 서로 도우며 살아","무리에서 암컷 대장이 사라지면 수컷이 암컷으로 바뀌기도 해"]);
 E("sea","⭐","불가사리","별 모양 바다 친구야.",["팔이 잘려도 다시 자라","뇌가 없어","입이 몸 아래쪽 가운데에 있어"],{kr:1});
