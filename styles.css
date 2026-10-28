@@ -423,3 +423,6 @@ a.button-ink { color: var(--paper); }
 @media (min-width: 631px) { .mobile-dock { display: none; } }
 
 .today-emoji { margin: 6px 0 12px; }
+.search-form { min-width: 0; width: 100%; }
+.search-strip .search-form { min-width: 0; }
+.today-emoji { line-height: 1.25; margin: 4px 0 6px; }

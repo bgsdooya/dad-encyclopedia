@@ -6,10 +6,10 @@
 var CATS = [
   { id: 'animal', emo: '🐾', name: '동물', color: 'var(--c-peach)', desc: '포유류, 새, 곤충, 바다 생물, 공룡까지',
     why: '왜 그럴까?', prompt: '오늘 본 동물은 어디서 살고 뭘 먹을까?',
-    subs: ['포유류', '새', '파충류·양서류', '곤충', '벌레·갑각류', '바다 생물', '공룡'] },
+    subs: ['포유류', '새', '파충류·양서류', '곤충', '벌레·갑각류', '바다 생물', '공룡·옛 동물', '반려동물', '동물 상식'] },
   { id: 'plant', emo: '🌻', name: '식물·버섯', color: 'var(--c-lime)', desc: '꽃, 나무, 버섯 (독 있는 것도!)',
     why: '왜 그럴까?', prompt: '집 근처에서 식물을 세 가지 찾아볼까?',
-    subs: ['꽃·나무', '버섯'] },
+    subs: ['꽃·나무', '채소·열매·곡식', '식물 상식', '버섯'] },
   { id: 'body', emo: '🫀', name: '우리 몸', color: 'var(--pink)', desc: '심장, 뼈, 뇌, 감각… 내 몸 설명서',
     why: '왜 그럴까?', prompt: '오늘 내 몸이 “고마워!” 할 일은 무엇일까?',
     subs: ['몸속 기관', '감각', '몸의 신기한 일'] },
@@ -126,19 +126,31 @@ function tokens(q) {
   });
   return out;
 }
+var SYN = {
+  '아파': ['아픔', '아프', '아플', '통증'], '아픈': ['아픔', '아프', '통증'], '아플': ['아픔', '아프', '통증'], '아파요': ['아픔', '아프', '통증'],
+  '모으기': ['저축', '용돈'], '모으는': ['저축'], '모아': ['저축'], '뜨거워': ['화상', '온도'], '뜨거운': ['화상', '온도'],
+  '졸려': ['잠', '수면'], '못자': ['잠', '수면'], '배고': ['꼬르륵', '식사'], '무서워': ['무서울', '불안'], '무섭': ['무서울', '불안'],
+  '똥': ['변', '똥'], '오줌': ['소변', '콩팥'], '이빨': ['치아', '이빨', '충치'], '치아': ['이빨', '충치'], '살빼': ['비만', 'BMI'],
+  '뚱뚱': ['비만', 'BMI'], '키크': ['성장', '키'], '키가': ['성장', '키'], '도둑': ['112', '경찰'], '불이': ['소방', '화재', '불이'],
+  '화나': ['화날', '분노'], '짜증': ['화날', '분노'], '친구': ['친구', '사과', '놀림'], '왕따': ['따돌림', '괴롭힘', '놀림']
+};
+function hasWord(str, w) { return (' ' + str.toLowerCase() + ' ').indexOf(' ' + w + ' ') > -1; }
 function search(q) {
   var toks = tokens(q);
   if (!toks.length) return [];
+  var terms = [];
+  toks.forEach(function (t) { terms.push(t); if (SYN[t]) SYN[t].forEach(function (x) { terms.push(x.toLowerCase()); }); });
   var res = [];
   DATA.forEach(function (e) {
-    var s = 0;
-    toks.forEach(function (t) {
-      if (e.th === t) s += 20;
-      else if (e.th.indexOf(t) > -1) s += 10;
-      else if (e.k.toLowerCase().indexOf(t) > -1) s += 6;
-      else if (e.hay.indexOf(t) > -1) s += 2;
+    var sc = 0;
+    terms.forEach(function (t) {
+      if (e.th === t) sc += 20;
+      else if (t.length < 2) { if (hasWord(e.k, t)) sc += 4; }
+      else if (e.th.indexOf(t) > -1) sc += 10;
+      else if (e.k.toLowerCase().indexOf(t) > -1) sc += 6;
+      else if (e.hay.indexOf(t) > -1) sc += 2;
     });
-    if (s) res.push([s, e]);
+    if (sc) res.push([sc, e]);
   });
   res.sort(function (a, b) { return b[0] - a[0] || a[1].i - b[1].i; });
   return res.map(function (r) { return r[1]; });
@@ -436,6 +448,7 @@ document.addEventListener('click', function (ev) {
 });
 
 (function init() {
+  try { history.scrollRestoration = 'manual'; } catch (e) { /* 지원 안 되면 그대로 */ }
   var b = document.getElementById('themeToggle');
   if (document.documentElement.dataset.theme === 'night') { b.textContent = '☀'; b.setAttribute('aria-pressed', 'true'); b.setAttribute('aria-label', '밝은 모드로 바꾸기'); }
   curHash = location.hash;
